@@ -2,7 +2,6 @@ package com.DAO;
 
 import com.connection.ConnectionDB;
 
-
 import com.twilio.Twilio;
 
 import com.twilio.rest.api.v2010.account.Message;
@@ -49,20 +48,19 @@ public class EnvoyerSMSDAO {
                 int STATUT_VOL = (int) (long) details.get("STATUT");
 
                 String querySelectIDInscrit = "SELECT Telephone from inscrits WHERE ID_VOL = '" + ID_VOL + "'";
-//                String querySelectIDInscrit = "SELECT v.numeroVol, i.Telephone "
-//                        + "FROM vols v,inscrits i"
-//                        + "WHERE v.ID = i.ID_VOL";
+//                String querySelectIDInscrit = "SELECT v.numeroVol, i.Telephone, d.STATUT "
+//                        + "FROM vols v,inscrits i, details d"
+//                        + "WHERE v.ID = i.ID_VOL"
+//                        + "AND v.ID = d.ID_VOL"
+//                        + "AND v.ID = " + ID_VOL + "";
                 preparedStatement = con.prepareStatement(querySelectIDInscrit);
                 ResultSet rs = preparedStatement.executeQuery();
 
-             
-
-                    
-                    if (rs.next()) {
+                if (rs.next()) {
                     telMatched = rs.getString("Telephone");
-                    //String numVol = rs.getString("NumeroVol");
+                    //String numVol = rs.getString("numeroVol");
+                    //int STATUT_VOL = rs.getInt("STATUT");
 
-                    
                     envoyerSMS(telMatched, STATUT_VOL);
                 }
             }
@@ -83,22 +81,21 @@ public class EnvoyerSMSDAO {
 
         }
 
-
     }
 
     public void envoyerSMS(String telephone, int STATUT) {
-        String numVol = " ";
-        
+        //String numVol = " ";
+
         if (STATUT == 1) {
-            message = "Le vol '" + numVol + "' est ARRIVÉ";
+            message = "Votre vol est ARRIVÉ";
         } else if (STATUT == 2) {
-            message = "Le vol '" + numVol + "' est PARTI";
+            message = "Votre vol est PARTI";
         } else if (STATUT == 3) {
-            message = "Le vol '" + numVol + "' est RETARDE";
+            message = "Votre vol est RETARDE";
         } else if (STATUT == 4) {
-            message = "Le vol '" + numVol + "' est ANNULE";
+            message = "Votre vol est ANNULE";
         } else if (STATUT == 5) {
-            message = "Le temps de vol '" + numVol + "' est REVISE";
+            message = "Le temps de votre vol est REVISE";
         }
 
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
