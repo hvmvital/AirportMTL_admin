@@ -27,7 +27,7 @@ public class SupprimerInscriptionSMSDAO {
 
             con = ConnectionDB.createConnection();
 
-            JSONArray obj = (JSONArray) parser.parse(new FileReader("G:/AirportAdmin/src/java/com/files/listeTelephones.json")); 
+            JSONArray obj = (JSONArray) parser.parse(new FileReader("G:/AirportMTL_admin/src/java/com/files/listeTelephones.json")); 
 
             for (Object o : obj) {
 

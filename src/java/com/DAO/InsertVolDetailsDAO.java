@@ -64,7 +64,7 @@ public class InsertVolDetailsDAO {
 
             con = ConnectionDB.createConnection();
 
-            JSONArray obj = (JSONArray) parser.parse(new FileReader("G:/AirportAdmin/src/java/com/files/vols.json"));  
+            JSONArray obj = (JSONArray) parser.parse(new FileReader("G:/AirportMTL_admin/src/java/com/files/vols.json"));  
 
             for (Object o : obj) {
 
@@ -117,7 +117,7 @@ public class InsertVolDetailsDAO {
 
             con = ConnectionDB.createConnection();
 
-            JSONArray obj = (JSONArray) parser.parse(new FileReader("G:/AirportAdmin/src/java/com/files/details.json"));  
+            JSONArray obj = (JSONArray) parser.parse(new FileReader("G:/AirportMTL_admin/src/java/com/files/details.json"));  
 
             for (Object o : obj) {
 

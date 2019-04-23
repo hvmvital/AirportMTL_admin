@@ -41,7 +41,7 @@ public class EnvoyerSMSDAO {
             stmt = con.createStatement();
 
             JSONParser parser = new JSONParser();
-            JSONArray obj = (JSONArray) parser.parse(new FileReader("G:/AirportAdmin/src/java/com/files/updateDetails.json"));
+            JSONArray obj = (JSONArray) parser.parse(new FileReader("G:/AirportMTL_admin/src/java/com/files/updateDetails.json"));
 
             for (Object o : obj) {
                 JSONObject details = (JSONObject) o;
